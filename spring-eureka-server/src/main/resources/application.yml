@@ -1,0 +1,48 @@
+server:
+  port: 8761
+
+spring:
+  #    active: peer1
+  application:
+    name: spring-eureka01-server
+  config:
+    activate:
+      on-profile: peer1
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true   #实例是否以机器 hostname形式注册
+    lease-expiration-duration-in-seconds: 90  #表示Eureka Server 在接收到上一个心跳之后等待下一个心跳的秒数 （默认90s），若不能在指定时间收到心跳，则移除此实例，并禁止此实例流量。
+    lease-renewal-interval-in-seconds: 30   #表示Eureka Client 向Eureka Server 发送心跳频率（默认30s）
+  #    ip-address: loclhost    #实例在注册中心中注册的唯一id
+  client:
+    register-with-eureka: true    #是否注册自己的信息到Eureka Server注册中心，默认true
+    fetch-registry: false   #是否拉取其他服务信息，默认true
+    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka    #注册到EurekaServer 地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka, http://${eureka.instance.hostname}:8762/eureka    #注册到EurekaServer 地址
+
+---
+server:
+  port: 8762
+spring:
+  #    active: peer2
+  application:
+    name: spring-eureka02-server
+  config:
+    activate:
+      on-profile: peer2
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true   #实例是否以机器 hostname形式注册
+    lease-expiration-duration-in-seconds: 90  #表示Eureka Server 在接收到上一个心跳之后等待下一个心跳的秒数 （默认90s），若不能在指定时间收到心跳，则移除此实例，并禁止此实例流量。
+    lease-renewal-interval-in-seconds: 30   #表示Eureka Client 向Eureka Server 发送心跳频率（默认30s）
+    ip-address: loclhost    #实例在注册中心中注册的唯一id
+  client:
+    register-with-eureka: true    #是否注册自己的信息到Eureka Server注册中心，默认true
+    fetch-registry: true   #是否拉取其他服务信息，默认true
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka, http://${eureka.instance.hostname}:8761/eureka    #注册到EurekaServer 地址
