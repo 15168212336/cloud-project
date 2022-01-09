@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.com.zhugue.jiayou</groupId>
+    <groupId>cn.com.zhuge.jiayou</groupId>
     <artifactId>cloud-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cloud-project</name>
@@ -34,16 +34,16 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
 
     </dependencies>
@@ -56,7 +56,7 @@
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>2021.0.0</version>
                 <type>pom</type>
-                <scope>runtime</scope>
+                <scope>import</scope>
             </dependency>
 
 
@@ -88,11 +88,6 @@
                 <version>${spring-cloud-config}</version>
             </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-config-monitor</artifactId>-->
-<!--                <version>2.1.4.RELEASE</version>-->
-<!--            </dependency>-->
 
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-commons -->
             <dependency>

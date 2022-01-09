@@ -2,14 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.com.zhuge.jiayou</groupId>
-    <artifactId>spring-config-server</artifactId>
+    <artifactId>config-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-config-server</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <groupId>cn.com.zhugue.jiayou</groupId>
+        <groupId>cn.com.zhuge.jiayou</groupId>
         <artifactId>cloud-project</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
@@ -26,16 +25,11 @@
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-            <version>${spring-cloud-config}</version>
-        </dependency>
-
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-config-monitor</artifactId>-->
-<!--         </dependency>-->
+<!--            <artifactId>spring-cloud-starter-config</artifactId>-->
+<!--        </dependency>-->
+
 
 
     </dependencies>
