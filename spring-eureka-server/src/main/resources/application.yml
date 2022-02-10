@@ -1,10 +1,16 @@
-server:
-  port: 8761
-
 spring:
   #    active: peer1
   application:
-    name: spring-eureka01-server
+    name: spring-eureka-server
+#  security:
+#    user:
+#      name: bmp
+#      password: SoyeaCommnet2020@#
+---
+
+server:
+  port: 8761
+spring:
   config:
     activate:
       on-profile: peer1
@@ -27,9 +33,6 @@ eureka:
 server:
   port: 8762
 spring:
-  #    active: peer2
-  application:
-    name: spring-eureka02-server
   config:
     activate:
       on-profile: peer2

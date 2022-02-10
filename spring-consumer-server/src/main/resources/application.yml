@@ -1,26 +1,26 @@
-#server:
-#  port: 9930
 spring:
   #  profiles: peer1
   application:
     name: spring-consumer-server
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: config-server
-      name: spring-consumer-server
-      profile: prod
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: spring-config-server
+#      name: spring-consumer-server
+#      profile: prod
+  config:
+#    import: prod:configserver:spring-config-server
+    import: prod:configserver:http://localhost:9940/spring-consumer-server-prod.properties
 
 eureka:
-  #  instance:
-  #    ip-address: localhost
+  instance:
+    hostname: localhost
+
   client:
     register-with-eureka: true    #是否注册自己的信息到Eureka Server注册中心，默认true
     fetch-registry: false   #是否拉取其他服务信息，默认true
     service-url:
 #      defaultZone: http://localhost:9911/eureka    #注册到EurekaServer 地址
       defaultZone: http://${eureka.instance.hostname}:8761/eureka, http://${eureka.instance.hostname}:8762/eureka    #注册到EurekaServer 地址
-
-
 
