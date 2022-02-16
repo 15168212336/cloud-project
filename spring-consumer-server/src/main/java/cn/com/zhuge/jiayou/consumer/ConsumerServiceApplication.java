@@ -1,4 +1,4 @@
-package cn.com.zhuge.jiayou.consumerservice;
+package cn.com.zhuge.jiayou.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
