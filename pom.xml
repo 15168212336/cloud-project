@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.com.zhuge.jiayou</groupId>
     <artifactId>cloud-project</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>cloud-project</name>
     <description>Demo project for Spring Boot</description>
@@ -18,6 +19,8 @@
         <module>spring-eureka-server</module>
         <module>spring-consumer-server</module>
         <module>spring-config-server</module>
+        <module>spring-common-druid</module>
+        <module>spring-gateway-server</module>
     </modules>
 
 
@@ -30,20 +33,21 @@
         <spring-cloud-netflix>3.1.0</spring-cloud-netflix>
         <spring-cloud-config>3.1.0</spring-cloud-config>
         <spring-cloud-commons>3.1.0</spring-cloud-commons>
+        <spring-cloud-gateway>3.1.0</spring-cloud-gateway>
     </properties>
 
     <dependencies>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>
@@ -81,6 +85,12 @@
                 <version>${spring-cloud-config}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${spring-cloud-gateway}</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -108,6 +118,28 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.20</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.10</version>
+            </dependency>
+
+
+            <!--druid启动器自动装配druid-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.1.10</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+
 
 
         </dependencies>

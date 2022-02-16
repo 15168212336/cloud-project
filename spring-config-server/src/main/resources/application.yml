@@ -19,5 +19,17 @@ spring:
       server:
         native:
           search-locations: classpath:/config/dev,classpath:/config/prod
+#spring:
+#  #  profiles: peer1
+#  application:
+#    name: spring-config-server
+#  profiles:
+#    active: composite
+#  cloud:
+#    config:
+#      server:
+#        composite:
+#          - type: native
+#            search-locations: classpath:/config/dev,classpath:/config/prod
 
 

@@ -1,42 +1,42 @@
 package cn.com.zhuge.jiayou.consumer.controller;
 
 
-import cn.com.zhuge.jiayou.consumer.entity.Room;
+import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.ResultSet;
+import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 public class ConsumerController {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private DataSource dataSource;
 
-    @GetMapping("getAllRoom")
-    public List<Room> getAllRoom() {
-        List<Room> query = jdbcTemplate.query("select * from room", new BeanPropertyRowMapper<>(Room.class));
-        return query;
-    }
-    @GetMapping("getRoomById")
-    public Room getRoomById(@RequestParam(value = "id") Long id) {
-        return jdbcTemplate.query("select * from room where id = ?",
-                ps -> ps.setString(1,id.toString()),
-                (ResultSetExtractor<Room>)rs -> rs.next() ? convert(rs) : null);
+    @GetMapping("consumer")
+    public String consumer(@RequestParam("tag") int tag) {
+        return "tag is " + tag;
     }
 
-    private static Room convert(ResultSet rs) throws SQLException {
-        Room room = new Room();
-        room.setId(rs.getLong("id"));
-        room.setRoomName(rs.getString("room_name"));
-        return room;
+    @GetMapping("datasource")
+    public void datasource() {
+        System.out.println(dataSource.getClass());
+        try {
+            Connection connection = dataSource.getConnection();
+            System.out.println(connection);
+
+            DruidDataSource druidDataSource = (DruidDataSource) dataSource;
+            System.out.println("druidDataSource 数据源最大连接数：" + druidDataSource.getMaxActive());
+            System.out.println("druidDataSource 数据源初始化连接数：" + druidDataSource.getInitialSize());
+
+            //关闭连接
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

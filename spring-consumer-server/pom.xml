@@ -3,8 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>consumer-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>consumer-service</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -15,6 +13,12 @@
     </parent>
 
     <dependencies>
+
+        <dependency>
+            <groupId>cn.com.zhuge.jiayou</groupId>
+            <artifactId>spring-common-druid</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
