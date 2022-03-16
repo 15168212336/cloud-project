@@ -4,6 +4,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 精确定位线程通信
+ */
 public class Print {
     private int num = 1;
     private Lock lock = new ReentrantLock();
@@ -22,7 +25,7 @@ public class Print {
             System.out.println(Thread.currentThread().getName() + "线程打印");
             num = 2;
             System.out.println("c1结束--num==" + num);
-            c2.signalAll();
+            c2.signal();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -42,7 +45,7 @@ public class Print {
             System.out.println(Thread.currentThread().getName() + "线程打印");
             num = 3;
             System.out.println("c2结束--num==" + num);
-            c3.signalAll();
+            c3.signal();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -57,12 +60,12 @@ public class Print {
             System.out.println("c3开始--num==" + num);
             while (num != 3) {
                 System.out.println("c3等待--num==" + num);
-                c1.await();
+                c3.await();
             }
             System.out.println(Thread.currentThread().getName() + "线程打印");
             num = 1;
             System.out.println("c3结束--num==" + num);
-            c1.signalAll();
+            c1.signal();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
