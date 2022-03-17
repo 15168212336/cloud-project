@@ -4,7 +4,7 @@ import cn.com.zhuge.jiayou.consumer.entity.Print;
 
 /**
  * synchronized和ReentrantLock区别
- *  
+ *
  *
  */
 public class SyncAndReentrantLockDifferentDemo {
