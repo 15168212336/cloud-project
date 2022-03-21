@@ -12,13 +12,20 @@ import java.util.concurrent.TimeUnit;
  *  1.系统资源不足
  *  2.进城运行时推进的
  *  3.资源分配不当
+ *
+ *  排查死锁
+ *  jdk自带jps 和jstack
+ *
+ *  jps:查看当前运行的java进程 和端口
+ *  jstack:查看原因
  */
 public class DeadLockDemo {
 
     public static void main(String[] args) {
 
-        new Thread(new HoldLockThread("B","B"),"线程A").start();
-        new Thread(new HoldLockThread("A","A"),"线程B").start();
+        new Thread(new HoldLockThread("A","B"),"线程A").start();
+
+        new Thread(new HoldLockThread("B","A"),"线程B").start();
 
     }
 }
