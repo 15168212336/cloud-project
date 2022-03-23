@@ -2,21 +2,23 @@ package cn.com.zhuge.jiayou.consumer.ioc.controller;
 
 import cn.com.zhuge.jiayou.consumer.ioc.service.HelloService;
 import cn.com.zhuge.jiayou.consumer.ioc.service.HelloServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-@WebServlet("/hello")
+@RestController
 public class HelloController extends HttpServlet {
 
     private HelloService helloService = new HelloServiceImpl();
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.getWriter().write(helloService.getData().toString());
+    @RequestMapping("hello")
+    public String Hello() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext("cn.com.zhuge.jiayou.consumer.ioc.entity");
+
+        System.out.println(applicationContext.getBean("account"));
+        return helloService.getData().toString();
     }
 }
