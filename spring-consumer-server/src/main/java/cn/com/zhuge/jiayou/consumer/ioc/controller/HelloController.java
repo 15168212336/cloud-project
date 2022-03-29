@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServlet;
+import java.util.HashSet;
+import java.util.Set;
 
 @RestController
 public class HelloController extends HttpServlet {
@@ -17,6 +19,7 @@ public class HelloController extends HttpServlet {
     @RequestMapping("hello")
     public String Hello() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext("cn.com.zhuge.jiayou.consumer.ioc.entity");
+        Set set = new HashSet();
 
         System.out.println(applicationContext.getBean("account"));
         return helloService.getData().toString();
