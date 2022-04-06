@@ -1,8 +1,5 @@
-package cn.com.zhuge.jiayou.consumer.ioc.dao;
+package cn.com.zhuge.jiayou.ioc.dao;
 
-import cn.com.zhuge.jiayou.consumer.ioc.dao.HelloDao;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

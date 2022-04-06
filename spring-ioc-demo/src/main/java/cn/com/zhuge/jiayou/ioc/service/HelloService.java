@@ -1,4 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.ioc.service;
+package cn.com.zhuge.jiayou.ioc.service;
 
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.ioc.dao;
+package cn.com.zhuge.jiayou.ioc.dao;
 
 import java.util.List;
 

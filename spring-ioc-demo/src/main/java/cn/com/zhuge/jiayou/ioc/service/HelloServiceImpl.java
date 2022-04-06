@@ -1,8 +1,9 @@
-package cn.com.zhuge.jiayou.consumer.ioc.service;
+package cn.com.zhuge.jiayou.ioc.service;
 
-import cn.com.zhuge.jiayou.consumer.ioc.dao.HelloDao;
-import cn.com.zhuge.jiayou.consumer.ioc.dao.HelloDaoImpl;
-import cn.com.zhuge.jiayou.consumer.ioc.factory.BeanFactory;
+
+
+import cn.com.zhuge.jiayou.ioc.dao.HelloDao;
+import cn.com.zhuge.jiayou.ioc.factory.BeanFactory;
 
 import java.util.List;
 

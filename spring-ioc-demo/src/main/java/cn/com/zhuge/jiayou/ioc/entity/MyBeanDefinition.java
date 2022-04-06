@@ -1,5 +1,6 @@
-package cn.com.zhuge.jiayou.consumer.ioc.entity;
+package cn.com.zhuge.jiayou.ioc.entity;
 
+import cn.com.zhuge.jiayou.ioc.annotation.Component;
 import lombok.Data;
 
 @Data

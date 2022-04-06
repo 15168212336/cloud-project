@@ -1,7 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.ioc.factory;
-
-import cn.com.zhuge.jiayou.consumer.ioc.dao.HelloDao;
-import cn.com.zhuge.jiayou.consumer.ioc.dao.HelloDaoImpl;
+package cn.com.zhuge.jiayou.ioc.factory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,15 +10,15 @@ public class BeanFactory {
 
     private static Map<String,Object> beanMap = new HashMap();
 
-    static {
-        try {
-            properties = new Properties();
-            properties.load(BeanFactory.class.getClassLoader().getResourceAsStream("factory.properties"));
-            System.out.println("-------------------------" + properties);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    static {
+//        try {
+//            properties = new Properties();
+//            properties.load(BeanFactory.class.getClassLoader().getResourceAsStream("factory.properties"));
+//            System.out.println("-------------------------" + properties);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public static Object getDao() {
         String var = properties.getProperty("helloDao");

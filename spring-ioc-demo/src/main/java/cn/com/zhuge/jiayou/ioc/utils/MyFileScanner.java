@@ -1,6 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.ioc.factory;
-
-import org.yaml.snakeyaml.scanner.ScannerException;
+package cn.com.zhuge.jiayou.ioc.utils;
 
 import java.io.File;
 import java.util.HashSet;
@@ -49,6 +47,7 @@ public class MyFileScanner implements Scan{
                 if (file.getName().endsWith(CLASS_SUFFIX)) {
                     //如果是class文件我们就放入我们的集合中。
                     try {
+                        String name = file.getName();
                         Class<?> clazz = Class.forName(packageName + "."+ file.getName().substring(0,file.getName().lastIndexOf(".")));
                         if(predicate==null||predicate.test(clazz)){
                             classPaths.add(clazz);

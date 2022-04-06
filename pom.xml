@@ -21,6 +21,8 @@
         <module>spring-config-server</module>
         <module>spring-common-druid</module>
         <module>spring-gateway-server</module>
+        <module>spring-oauth-server</module>
+        <!--<module>spring-ioc-demo</module>-->
     </modules>
 
 

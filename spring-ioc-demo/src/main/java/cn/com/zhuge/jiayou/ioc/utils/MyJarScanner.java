@@ -1,4 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.ioc.factory;
+package cn.com.zhuge.jiayou.ioc.utils;
 
 import java.io.IOException;
 import java.net.JarURLConnection;

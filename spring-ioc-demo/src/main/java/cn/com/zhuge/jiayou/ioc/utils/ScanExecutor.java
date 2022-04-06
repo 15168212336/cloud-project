@@ -1,4 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.ioc.factory;
+package cn.com.zhuge.jiayou.ioc.utils;
 
 import java.util.Set;
 import java.util.function.Predicate;
