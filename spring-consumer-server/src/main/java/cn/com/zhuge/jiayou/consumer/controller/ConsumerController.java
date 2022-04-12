@@ -2,6 +2,7 @@ package cn.com.zhuge.jiayou.consumer.controller;
 
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.google.inject.internal.cglib.core.$DefaultGeneratorStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
@@ -19,12 +21,30 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class ConsumerController {
 
+    private int i = 0;
     @Autowired
     private DataSource dataSource;
 
     @GetMapping("consumer")
     public String consumer(@RequestParam("tag") int tag) {
         return "tag is " + tag;
+    }
+
+    @GetMapping("JMeter")
+    public void JMeterTest(@RequestParam("tag") String tag) {
+
+//        i++;
+//        System.out.println(i);
+        synchronized (tag.intern()) {
+            try {
+                System.out.println(tag + "is in");
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+//        return "tag is " + tag;
     }
 
     @GetMapping("datasource")
