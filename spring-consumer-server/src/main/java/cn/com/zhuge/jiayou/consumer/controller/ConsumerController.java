@@ -27,6 +27,10 @@ public class ConsumerController {
         return "tag is " + tag;
     }
 
+    public String tets() {
+        return null;
+    }
+
     @GetMapping("datasource")
     public void datasource() {
         System.out.println(dataSource.getClass());
