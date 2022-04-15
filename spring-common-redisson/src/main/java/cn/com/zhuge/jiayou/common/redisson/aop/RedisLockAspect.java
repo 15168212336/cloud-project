@@ -1,8 +1,8 @@
-package cn.com.zhuge.jiayou.consumer.aop;
+package cn.com.zhuge.jiayou.common.redisson.aop;
 
 
-import cn.com.zhuge.jiayou.consumer.annotation.RedisLock;
-import cn.com.zhuge.jiayou.consumer.util.RedissonUtil;
+import cn.com.zhuge.jiayou.common.redisson.annotation.RedisLock;
+import cn.com.zhuge.jiayou.common.redisson.utils.RedissonUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
-import static cn.com.zhuge.jiayou.consumer.entity.LockType.REENTRANT_LOCK;
 
 @Component
 @Aspect

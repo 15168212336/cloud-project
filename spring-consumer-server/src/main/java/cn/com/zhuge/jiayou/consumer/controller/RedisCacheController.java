@@ -1,10 +1,9 @@
 package cn.com.zhuge.jiayou.consumer.controller;
 
 
-import cn.com.zhuge.jiayou.consumer.annotation.RedisLock;
-import cn.com.zhuge.jiayou.consumer.entity.LockType;
+import cn.com.zhuge.jiayou.common.redisson.context.LockType;
 import cn.com.zhuge.jiayou.consumer.entity.Room;
-import org.redisson.Redisson;
+import cn.com.zhuge.jiayou.common.redisson.annotation.RedisLock;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +19,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 public class RedisCacheController {

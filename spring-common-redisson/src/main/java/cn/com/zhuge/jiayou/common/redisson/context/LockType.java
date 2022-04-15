@@ -1,4 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.entity;
+package cn.com.zhuge.jiayou.common.redisson.context;
 
 public enum LockType {
 

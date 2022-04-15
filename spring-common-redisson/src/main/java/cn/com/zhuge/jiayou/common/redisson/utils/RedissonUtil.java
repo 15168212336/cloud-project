@@ -1,6 +1,6 @@
-package cn.com.zhuge.jiayou.consumer.util;
+package cn.com.zhuge.jiayou.common.redisson.utils;
 
-import cn.com.zhuge.jiayou.consumer.annotation.RedisLockKey;
+import cn.com.zhuge.jiayou.common.redisson.annotation.RedisLockKey;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.redisson.api.*;

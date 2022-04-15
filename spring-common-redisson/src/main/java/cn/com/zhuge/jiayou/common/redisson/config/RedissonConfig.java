@@ -1,4 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.config;
+package cn.com.zhuge.jiayou.common.redisson.config;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;

@@ -1,4 +1,4 @@
-package cn.com.zhuge.jiayou.consumer.annotation;
+package cn.com.zhuge.jiayou.common.redisson.annotation;
 
 import java.lang.annotation.*;
 
