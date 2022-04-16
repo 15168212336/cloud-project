@@ -23,8 +23,16 @@ public class ConsumerController {
     private DataSource dataSource;
 
     @GetMapping("consumer")
-    public String consumer(@RequestParam("tag") int tag) {
-        return "tag is " + tag;
+    public String consumer(@RequestParam("tag") String tag) {
+        synchronized (tag.intern()) {
+            try {
+                System.out.println(tag + "-------in");
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return "tag is " + tag;
+        }
     }
 
     public String tets() {

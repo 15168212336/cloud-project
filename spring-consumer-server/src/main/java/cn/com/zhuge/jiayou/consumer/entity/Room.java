@@ -1,8 +1,10 @@
 package cn.com.zhuge.jiayou.consumer.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Room {
+public class Room implements Serializable {
+
     private Long id;
     private String roomNo;
     private String roomName;
