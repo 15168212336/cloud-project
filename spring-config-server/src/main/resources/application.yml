@@ -13,12 +13,23 @@ spring:
   application:
     name: spring-config-server
   profiles:
+#    active: dev,prod
     active: native
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:/config/dev,classpath:/config/prod
+#        git:        #git方式
+#          uri: https://github.com/15168212336/cloud-project.git
+#          username: 15168212336
+#          password: Yang4564
+#          passphrase: spring-config-server/src/main/resources/config/prod
+#          search-paths: classpath:/main/resources/config/prod
+        native:     #本地方式
+#          search-locations: classpath:/config/dev,classpath:/config/prod            #读取本地类路径方式
+          search-locations: file:///${search-locations}/dev,file:///${search-locations}/prod    #读取本地文件系统方式
+search-locations: D:/workspace/cloud-project/spring-config-server/src/main/resources/config
+
+
 #spring:
 #  #  profiles: peer1
 #  application:
