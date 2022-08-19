@@ -17,7 +17,7 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: eureka
     prefer-ip-address: true   #实例是否以机器 hostname形式注册
     lease-expiration-duration-in-seconds: 90  #表示Eureka Server 在接收到上一个心跳之后等待下一个心跳的秒数 （默认90s），若不能在指定时间收到心跳，则移除此实例，并禁止此实例流量。
     lease-renewal-interval-in-seconds: 30   #表示Eureka Client 向Eureka Server 发送心跳频率（默认30s）
@@ -39,7 +39,7 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: eureka
     prefer-ip-address: true   #实例是否以机器 hostname形式注册
     lease-expiration-duration-in-seconds: 90  #表示Eureka Server 在接收到上一个心跳之后等待下一个心跳的秒数 （默认90s），若不能在指定时间收到心跳，则移除此实例，并禁止此实例流量。
     lease-renewal-interval-in-seconds: 30   #表示Eureka Client 向Eureka Server 发送心跳频率（默认30s）

@@ -1,26 +1,30 @@
 package cn.com.zhuge.jiayou.consumer.controller;
 
 
+import cn.com.zhuge.jiayou.consumer.entity.RoomOpenLog;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.*;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 @RestController
 public class ConsumerController {
 
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @GetMapping("consumer")
     public String consumer(@RequestParam("tag") String tag) {
@@ -35,7 +39,7 @@ public class ConsumerController {
         }
     }
 
-    public String tets() {
+    public String test() {
         return null;
     }
 
@@ -50,6 +54,7 @@ public class ConsumerController {
             System.out.println("druidDataSource 数据源最大连接数：" + druidDataSource.getMaxActive());
             System.out.println("druidDataSource 数据源初始化连接数：" + druidDataSource.getInitialSize());
 
+            List<Map<String, Object>> query = jdbcTemplate.queryForList("select r.id from room r" );
             //关闭连接
             connection.close();
         } catch (SQLException e) {
@@ -97,5 +102,67 @@ public class ConsumerController {
 //                }
 //            },String.valueOf(i)).start();
 //        }
+    }
+    private BlockingQueue<RoomOpenLog> blockingQueue = new ArrayBlockingQueue<RoomOpenLog>(200);
+    private static ThreadPoolExecutor threadPoolExecutor;
+    static {
+        threadPoolExecutor = new ThreadPoolExecutor(2,
+                16,
+                5,
+                TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(3),
+                Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.CallerRunsPolicy());
+    }
+
+
+    private static long max = 0;
+    @PostMapping("insertLog")
+    public String inputLog(@RequestBody RoomOpenLog roomOpenLog) throws SQLException {
+
+
+        try {
+            if (!putQueue(roomOpenLog)){
+                return "time out";
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        threadPoolExecutor.execute(() -> {
+            String insertLog = "insert into room_open_log (room_id,open_lock_time,open_lock_type,card_id,fingerprint_id,open_lock_result,create_time) values (?,?,?,?,?,?,?)";
+            RoomOpenLog roomOpenLog1 = blockingQueue.poll();
+            jdbcTemplate.update(insertLog, roomOpenLog1.getRoomId(), roomOpenLog1.getOpenLockTime(), roomOpenLog1.getOpenLockType(), roomOpenLog1.getCardId(), roomOpenLog1.getFingerprintId(), roomOpenLog1.getOpenLockResult(),roomOpenLog1.getCreateTime());
+        });
+        return "success";
+
+
+
+
+    }
+
+    @PostMapping("insertLog2")
+    public void inputLog2(@RequestBody RoomOpenLog roomOpenLog) throws SQLException {
+
+        String insertLog = "insert into room_open_log (room_id,open_lock_time,open_lock_type,card_id,fingerprint_id,open_lock_result,create_time) values (?,?,?,?,?,?,?)";
+        jdbcTemplate.update(insertLog, roomOpenLog.getRoomId(), roomOpenLog.getOpenLockTime(), roomOpenLog.getOpenLockType(), roomOpenLog.getCardId(), roomOpenLog.getFingerprintId(), roomOpenLog.getOpenLockResult(),roomOpenLog.getCreateTime());
+    }
+
+    private boolean putQueue(RoomOpenLog roomOpenLog) throws InterruptedException {
+        return blockingQueue.offer(roomOpenLog, 20, TimeUnit.SECONDS);
+
+
+    }
+    @GetMapping("getMax")
+    public long getMax() {
+        System.out.println("druidDataSource 数据源最大连接数：" + max);
+        return max;
+    }
+
+    class Solution {
+        public int longestStrChain(String[] words) {
+            List<String> list = Arrays.asList(words);
+            return list.size();
+        }
     }
 }

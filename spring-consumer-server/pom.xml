@@ -14,11 +14,11 @@
 
     <dependencies>
         <!--redis模块-->
-        <dependency>
-            <groupId>cn.com.zhuge.jiayou.redisson</groupId>
-            <artifactId>common-redisson</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.com.zhuge.jiayou.redisson</groupId>-->
+<!--            <artifactId>common-redisson</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
         <!--druid模块-->
         <dependency>
@@ -59,6 +59,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
     </dependencies>
