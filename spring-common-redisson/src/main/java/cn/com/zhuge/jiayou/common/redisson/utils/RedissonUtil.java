@@ -119,7 +119,6 @@ public class RedissonUtil {
      * @return
      */
     public static RLock getRLock(RedissonClient redisson, String objectName){
-        System.out.println("redisLock======================"+objectName);
         RLock rLock=redisson.getLock(objectName.intern());
         return rLock;
     }

@@ -14,7 +14,8 @@ public class RedissonConfig {
         Config config = new Config();
         config.useSingleServer()
                 // use "rediss://" for SSL connection
-                .setAddress("redis://127.0.0.1:6379");
+                .setAddress("redis://182.61.35.198:6379")
+                .setPassword("admin");
         RedissonClient redissonClient = Redisson.create(config);
         return redissonClient;
     }

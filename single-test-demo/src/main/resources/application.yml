@@ -1,0 +1,17 @@
+
+server:
+  port: 9940
+
+spring:
+  config:
+    activate:
+      on-profile: peer1
+
+---
+
+server:
+  port: 9941
+spring:
+  config:
+    activate:
+      on-profile: peer2

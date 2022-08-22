@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
+import static cn.com.zhuge.jiayou.common.redisson.context.LockType.*;
+
 
 @Component
 @Aspect
@@ -22,7 +24,7 @@ public class RedisLockAspect {
     @Autowired
     private RedissonClient redissonClient;
 
-    @Around(value = "execution(* cn.com.zhuge.jiayou.consumer..*(..))&&@annotation(cn.com.zhuge.jiayou.consumer.annotation.RedisLock)")
+    @Around(value = "execution(* cn.com.zhuge.jiayou..*(..))&&@annotation(cn.com.zhuge.jiayou.common.redisson.annotation.RedisLock)")
     public Object lock(ProceedingJoinPoint point) throws Throwable {
         Object object =null;
         RedisLock redisLock = getDistRedisLockInfo(point);
@@ -68,7 +70,7 @@ public class RedisLockAspect {
                 object = point.proceed();
             }
         }finally {
-            if (lock.isLocked()) {
+            if (lock.isLocked()&&lock.isHeldByCurrentThread()) {
                 lock.unlock();
             }
         }
