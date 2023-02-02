@@ -1,0 +1,52 @@
+server:
+  port: 9910
+
+alipay:
+  appId: "2021000116675031"
+  merchantPrivateKey: "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCW0JLUOetRXhPlw6tUW5q+0gtNb5ywpdYWyiL5k2N3fyaFs4BTruffia3ZgFHHGxqRtD6GF62InUu4gYG4gzCt/PIP02UkDG9iwPmg2lx+WUfWJCG4eG1XaolNkx7TNaf9PcEGcnovsTppGXZMMy32s3xk9JuHBpTthsY8Y5iV25/PaxBrI8sH6inbRtfdIjMdbzLIlt9UAn/gGUCPPBCM2Q2LGy6e0kvf9kHdHU3Jb7jr2dr2w2MtHLUedLq00tCpFotF83pymdlAHyB1TlKqGAzhXsjYHn0Jvi4a2HgXkamLA1POEiX/kEO/oje7/WTA/YgJpNLXvyjaosYF5G9dAgMBAAECggEACd2E7UsIoJ710D7Xc0I2wiq9QIh/iHKgqYb5eLfydrujinVufIrhchbwf1zMfKjCOSvAN0dPO7OGY4BdOvOh+I+mSfC7GfuSQbR739DI4h72+wQMDKQcCu7WInPwPUKyRXeHq+NLKNmAB6X5vgxPAmdFSNlTXybIES2SxBqDvbGxEgHi4EEu25KR/+i3sQu0/cp5b/T8IQ1Q3ehL3fhVw8w4CjZQb7VzbNdSKZ5XKnKU+8KBxNvXtQ1Is8pa12M8icNPosl4BddTQt8Yz7XpQr0bBWmX9PIXNX5U9f/DVJPjeF/+JOsKeNaQUsvUuyQmAyLy7rfImhfo3gKtPtkHxQKBgQDpKhPljejd/WGKchw+mDkVqW4xj7d3RWwZtk5sO5hAbmemKZRpmL8ieIPvRKSwmPMFwWcrtCCvi7MjEq2hAyVgszGebIIp95YaW+UXXjFBPo8B7y0JEJ6+lzkDnx1KuqvD1yzS0KUuysOyCWfUgcLndYe5EuJvox046vr4nglFwwKBgQClldEsSffrJRTcLCd1J84uYfEqo48Vhy+iOT+0uKqTnoiVRsC27fTgxc/lf8dU8kdZJ34eTyOnN0xxrQGGJxLHYklnBXJXRQLYBRvHWug4u9SoJVVv2Q1we9z67hpIwH2DCXEyDS3xTTh3HfHNSKCIrvLJ6HHP9GhvA+0d3umEXwKBgQCuWP1pwDRpkicWq/78uzysOvYf7zQj5nBPxadcfS96tlOgxySn1UTO1Mjq6CwxtRy7qAOqhVWPjmmUB0p3xG91oGiw6rhmAzFlYmOqlo9EFzA+JQdK6Pea0l8amyb/ExiPJ13oAYYSuCGfBjNyjtkb1CF5vWo+Sfz265Zgw2NxmwKBgEDLYD+xbicAqqoBSStp+R9jSgjCWeI1tSkIt+oS/QSo2492UUED2nf+T/zhRHH0IIE9l/dqRmxPkkVFSrxhG9MTnd+HXRfTNGqtjRI0e3x/25Y0jbsntz+V6IH0nCpt0G9vSXEpgRnUesz51b3btp3lv7HMmISkgh027xlqOfyHAoGARG7MBPvzj8B8n6eUqYAJSUStW70pvWrRuhwwZy6CkinAQIa9tP6ljlK8aSysr2ApV6R93hY69dbJfz9DKT9t6Z4Ugus2BU8+dKwBm9evmqKbKUF7VEcqvUuFwKyCUr5LtRFv5On6lZ38NIIQB05nq7dnBDKqbrA0p+RqhzTYXJA="
+  alipayPublicKey: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx4/KWkBa8M3E3PTUQkogvqX4mMpy0YhiXELsuWdUik+g3h/YI1ChzRv3vg+muQ2SsLD+XbP6BJosKXnqH8uSOGfJEHZlgEsmLhaN4L2mY8xyTFpd3Ep3X4sgYbbpRqJ5WWb35nqTONZMuOv6GV4Y45ufXq67YqHXeP8uNoY6wyaRf/NpfvltNASv4mpxTxffB4Y1WMJldCnSbKJWVFql24CIgj4AjtjW+tyvfGghQOyUUkPGOhp3w81xyc+asOHlJY5X6ni7yCb3SplQGXm+RddKTmhvby3DqtGio5sJfkfHL6xJNU3iCE+8V0ZZxs1B03nRZp+V69UzsBJXblr7PwIDAQAB"
+  notifyUrl: "http://182.61.35.198:9910/alipayNotify"
+  returnUrl: "http://182.61.35.198:9910/alipayReturn"
+  gatewayUrl: "https://openapi.alipaydev.com/gateway.do"
+
+spring:
+  datasource:
+    url: jdbc:mysql://182.61.35.198:3306/test?serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: woshizhuge!1
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      #Spring Boot 默认是不注入这些属性值的，需要自己绑定
+      #druid 数据源专有配置
+      # 初始化大小，最小，最大
+      initialSize: 5
+      minIdle: 5
+      maxActive: 100
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 用来检测连接是否有效的sql，要求是一个查询语句
+      validationQuery: SELECT 1 FROM DUAL
+      # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      testWhileIdle: true
+      # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
+      testOnBorrow: false
+      # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      testOnReturn: false
+      # 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。
+      poolPreparedStatements: true
+      # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
+      max-pool-prepared-statement-per-connection-size: 50
+
+      #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+      #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+      #则导入 log4j 依赖即可，Maven 地址：https://mvnrepository.com/artifact/log4j/log4j
+      filters: stat,wall,log4j
+      # 合并多个DruidDataSource的监控数据
+      useGlobalDataSourceStat: true
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500

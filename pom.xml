@@ -23,6 +23,10 @@
         <module>spring-common-druid</module>
         <module>spring-gateway-server</module>
         <module>spring-oauth-server</module>
+        <module>spring-common-http</module>
+        <module>alipay-demo</module>
+        <module>spring-common-redisson</module>
+        <module>spring-common-core</module>
 <!--        <module>spring-ioc-demo</module>-->
     </modules>
 
@@ -37,6 +41,14 @@
         <spring-cloud-config>3.1.0</spring-cloud-config>
         <spring-cloud-commons>3.1.0</spring-cloud-commons>
         <spring-cloud-gateway>3.1.0</spring-cloud-gateway>
+        <spring-boot-starter-jdbc>2.6.1</spring-boot-starter-jdbc>
+        <mysql-connector-java>8.0.20</mysql-connector-java>
+        <druid>1.1.10</druid>
+        <log4j>1.2.17</log4j>
+        <redisson>3.17.4</redisson>
+        <fastjson>1.2.83</fastjson>
+        <httpclient>4.5.5</httpclient>
+        <poi>5.2.2</poi>
     </properties>
 
     <dependencies>
@@ -113,19 +125,19 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
-                <version>2.6.1</version>
+                <version>${spring-boot-starter-jdbc}</version>
             </dependency>
 
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.20</version>
+                <version>${mysql-connector-java}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
-                <version>1.1.10</version>
+                <version>${druid}</version>
             </dependency>
 
 
@@ -133,25 +145,43 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
-                <version>1.1.10</version>
+                <version>${druid}</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/log4j/log4j -->
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
-                <version>1.2.17</version>
+                <version>${log4j}</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.redisson/redisson -->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
-                <version>3.17.4</version>
+                <version>${redisson}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson}</version>
             </dependency>
 
 
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient}</version>
+            </dependency>
 
+            <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
